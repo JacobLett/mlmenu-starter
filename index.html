@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blueprint: Multi-Level Menu</title>
+	<meta name="description" content="Blueprint: A basic template for a responsive multi-level menu" />
+	<meta name="keywords" content="blueprint, template, html, css, menu, responsive, mobile-friendly" />
+	<meta name="author" content="Codrops" />
+
+	
+	
+	
+	<!-- menu styles -->
+	<link rel="stylesheet" type="text/css" href="css/mlmenu.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+</head>
+
+<body>
+	<!-- Main container -->
+	<div class="container">
+		<header>
+			<h1>LOGO</h1>
+			<nav>
+				<a href="">link 1</a>
+				<a href="">link 2</a>
+				<a href="">link 3</a>
+				<a href="">link 4</a>
+			</nav>
+			<div data-clone="submenu-1"></div>
+		</header>
+
+		<button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu">OPEN</span></button>
+
+		<nav id="ml-menu" class="menu">
+			<button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross">CLOSE</span></button>
+			<div class="menu__wrap">
+
+				<!-- ## Main Menu -->
+				<ul data-menu="main" class="menu__level" tabindex="-1" role="menu" aria-label="All">
+					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">One</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-1" aria-owns="submenu-1" href="#">Solutions</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-2" aria-owns="submenu-2" href="#">Applications</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-3" aria-owns="submenu-3" href="#">Services</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-4" aria-owns="submenu-4" href="#">Resources</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-5" aria-owns="submenu-5" href="#">About</a></li>
+				</ul>
+				
+				<!-- solutions - Submenu 1 -->
+				<ul data-menu="submenu-1" id="submenu-1" class="menu__level" tabindex="-1" role="menu" aria-label="Vegetables">
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-1-1" aria-owns="submenu-1-1" href="#">Trends</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-1-2" aria-owns="submenu-1-2" href="#">Industries</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-1-3" aria-owns="submenu-1-3" href="#">Roles</a></li>
+				</ul>
+				
+				<!--  solutions - Submenu 1-1 -->
+				<ul data-menu="submenu-1-1" id="submenu-1-1" class="menu__level" tabindex="-1" role="menu" aria-label="solutions-1-1">
+					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Additive Manufacturing</a></li>
+				</ul>
+
+				<!--  solutions - Submenu 1-2 -->
+				<ul data-menu="submenu-1-2" id="submenu-1-2" class="menu__level" tabindex="-1" role="menu" aria-label="solutions-1-2">
+					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Aerospace</a></li>
+				</ul>
+
+				<!--  solutions Submenu 1-3 -->
+				<ul data-menu="submenu-1-3" id="submenu-1-3" class="menu__level" tabindex="-1" role="menu" aria-label="solutions-1-3">
+					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Data Analytics</a></li>
+				</ul>
+
+				<!-- Applications Submenu 2 -->
+				<ul data-menu="submenu-2" id="submenu-2" class="menu__level" tabindex="-1" role="menu" aria-label="solutions-2">
+					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Cloud</a></li>
+				</ul>
+				
+				<!-- Services Submenu 3 -->
+				<ul data-menu="submenu-3" id="submenu-3" class="menu__level" tabindex="-1" role="menu" aria-label="solutions-3">
+					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Data Science</a></li>
+				</ul>
+				
+				<!-- Resources Submenu 4 -->
+				<ul data-menu="submenu-4" id="submenu-4" class="menu__level" tabindex="-1" role="menu" aria-label="solutions-4">
+					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Customer Stories</a></li>
+				</ul>
+				
+				<!-- About Submenu 5 -->
+				<ul data-menu="submenu-5" id="submenu-5" class="menu__level" tabindex="-1" role="menu" aria-label="solutions-5">
+					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Company</a></li>
+				</ul>
+
+			</div>
+		</nav>
+
+		
+	</div>
+	<!-- /view -->
+
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="  crossorigin="anonymous"></script>
+
+	<script src="js/mlmenu.js"></script>
+	<script>
+	(function() {
+		var menuEl = document.getElementById('ml-menu'),
+			mlmenu = new MLMenu(menuEl, {
+				// breadcrumbsCtrl : true, // show breadcrumbs
+				// initialBreadcrumb : 'all', // initial breadcrumb text
+				backCtrl : false, // show back button
+				 itemsDelayInterval : 60, // delay between each menu item sliding animation
+				//onItemClick: loadDummyData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
+			});
+
+		// mobile menu toggle
+		var openMenuCtrl = document.querySelector('.action--open'),
+			closeMenuCtrl = document.querySelector('.action--close');
+
+		openMenuCtrl.addEventListener('click', openMenu);
+		closeMenuCtrl.addEventListener('click', closeMenu);
+
+		function openMenu() {
+			classie.add(menuEl, 'menu--open');
+			closeMenuCtrl.focus();
+		}
+
+		function closeMenu() {
+			classie.remove(menuEl, 'menu--open');
+			openMenuCtrl.focus();
+		}
+
+
+		$(window).resize(function(){     
+
+			if ($('.container').width() <= 800 ){
+				console.log('mobile');
+				openMenu();
+			} else { 
+				console.log('desktop');
+				closeMenu();
+			}
+	 });
+
+		// simulate grid content loading
+		var gridWrapper = document.querySelector('.content');
+
+	})();
+
+
+	$( document ).ready(function() {
+		console.log("check");
+		
+		$("[data-clone]").each(function( index ) {
+			var cloneThis = $(this).attr("data-clone");
+			console.log(cloneThis);
+			$("#" + cloneThis).clone().html('[data-clone="'+cloneThis+'"]').removeAttr('id');
+		});
+	});
+
+
+
+
+	</script>
+</body>
+
+</html>
